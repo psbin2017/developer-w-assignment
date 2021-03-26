@@ -42,26 +42,34 @@
 
 </body>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="./js/jquery.3.6.0.min.js"></script>
 <script>
 
 $(document).ready(function() {
     $("#output").click(function() {
         $.ajax({
             url: "/assignment",
-            data: input(),
-            type: "POST",
             dataType: "json",
-        }).done(function(o) {
-
+            contentType: "application/json; charset=UTF-8",
+            type: "post",
+            data: JSON.stringify(input()),
+            success: function (res) {
+                $("#share").text(res.share);
+                $("#rest").text(res.rest);
+            },
+            error: function (request, status, error) {
+                console.log(request);
+                console.log(status);
+                console.log(error);
+            }
         });
     });
 
     function input() {
         return {
-            url : document.getElementById("url").value,
-            type : document.getElementById("type").value,
-            unit : document.getElementById("unit").value
+            url : $("#url").val(),
+            type : $("#type").val(),
+            unit : $("#unit").val()
         }
     }
 })
