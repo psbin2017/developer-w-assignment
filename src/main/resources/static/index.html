@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Assignment</title>
+</head>
+<body>
+
+    <h1>[ 입 력 ]</h1>
+
+    <div>
+        <div>
+            URL : <input type="text" id="url" name="url" />
+        </div>
+        <div>
+        Type :
+            <select id="type" name="type">
+                <option value="HTML">HTML 태그 제외</option>
+                <option value="TEXT">Text 전체</option>
+            </select>
+        </div>
+        <div>
+            출력 단위 묶음 : <input type="number" id="unit" name="unit" />
+        </div>
+        <div>
+            <input type="button" id="output" value="출력" />
+        </div>
+    </div>
+
+    <hr/>
+
+    <h2>[ 출 력 ]</h2>
+
+    <div>
+        <div>
+        몪 : <span id="share"> </span>
+        </div>
+        <div>
+        나머지 : <span id="rest"> </span>
+        </div>
+    </div>
+
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+
+$(document).ready(function() {
+    $("#output").click(function() {
+        $.ajax({
+            url: "/assignment",
+            data: input(),
+            type: "POST",
+            dataType: "json",
+        }).done(function(o) {
+
+        });
+    });
+
+    function input() {
+        return {
+            url : document.getElementById("url").value,
+            type : document.getElementById("type").value,
+            unit : document.getElementById("unit").value
+        }
+    }
+})
+
+</script>
+</html>
