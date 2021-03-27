@@ -1,7 +1,5 @@
 package com.assignment.web.dto;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 public class SearchRequestBuilder {
 
     private static final String URL = "https://github.com/psbin2017/developer-w-assignment";

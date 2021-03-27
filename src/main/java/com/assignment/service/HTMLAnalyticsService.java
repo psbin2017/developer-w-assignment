@@ -11,6 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.client.RestTemplate;
 
 @Slf4j
@@ -21,14 +22,13 @@ public class HTMLAnalyticsService {
     private final RestTemplate restTemplate;
 
     public SearchResponse analysis(SearchRequest request) {
-
         ResponseEntity<String> responseEntity = restTemplate.exchange(request.getUrl(), HttpMethod.GET, null, String.class);
-        if ( responseEntity == null || responseEntity.getBody() == null ) {
+        if (ObjectUtils.isEmpty(responseEntity) || responseEntity.getBody() == null) {
             return SearchResponse.builder().division("").remainder("").build();
         }
 
         String html = responseEntity.getBody();
-        if ( request.getType() == SearchType.HTML ) {
+        if (request.getType() == SearchType.HTML) {
             html = TextReplacer.removeHtmlTag(html);
         }
 
