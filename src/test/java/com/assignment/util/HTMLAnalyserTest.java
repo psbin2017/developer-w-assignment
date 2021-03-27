@@ -10,12 +10,25 @@ class HTMLAnalyserTest {
     @Test
     public void HTML_파일을_읽어_잘_처리하는지() throws Exception {
         // given
-        String given = FileReader.read("/test/sample1.html");
+        String given = FileReader.read("/static/test/sample1.html");
 
         // when
         String actual = HTMLAnalyser.process(given);
-        String expected = "A0A0a0a0a1a1a1a1a2a3a4a5a6a7a8a8a9abbbbbCccccccccccDdddddddddEeeeeeeeeeeeeeeeeeeeeeeeeeeeeFggHhhhhhhhhhIIiiiiiiiiiiiiiiiLlllllllllllllMmmmmmmmmmmmmmmmmNnnnnnnnnnnnoooooooooPppppqrrrrSSSssssssTTttttttttttttttttttttttttUUuuuuuuvvvwwwXxyyy";
+        String expected = "A0a0a0a1a1a1a8aaaaaaaaaabbbbCccccccccccDdddddddddeeeeeeeeeeeeeeeeeeeeeeeeeeeFgghhhhhhhhhiiiiiiiiiiiiiiilllllllllllllmmmmmmmmmmmmmmmnnnnnnnnnnnoooooooooppppqrrrssssssTttttttttttttttttttttttttUUuuuuuvvvwwwXxyyy";
         
+        // then
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void HTML_파일을_읽어_잘_처리하는지2() throws Exception {
+        // given
+        String given = FileReader.read("/static/test/sample2.text");
+
+        // when
+        String actual = HTMLAnalyser.process(given);
+        String expected = "";
+
         // then
         assertEquals(expected, actual);
     }

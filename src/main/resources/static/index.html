@@ -33,10 +33,10 @@
 
     <div>
         <div>
-        몪 : <span id="share"> </span>
+        몪 : <span id="division"> </span>
         </div>
         <div>
-        나머지 : <span id="rest"> </span>
+        나머지 : <span id="remainder"> </span>
         </div>
     </div>
 
@@ -54,8 +54,8 @@ $(document).ready(function() {
             type: "post",
             data: JSON.stringify(input()),
             success: function (res) {
-                $("#share").text(res.share);
-                $("#rest").text(res.rest);
+                $("#division").text(res.division);
+                $("#remainder").text(res.remainder);
             },
             error: function (request, status, error) {
                 console.log(request);
