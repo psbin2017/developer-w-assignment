@@ -1,9 +1,11 @@
 package com.assignment.util;
 
+import org.springframework.util.ObjectUtils;
+
 public class HTMLAnalyser {
 
     public static String process(String html) {
-        if ( html.isEmpty() ) {
+        if (ObjectUtils.isEmpty(html)) {
             return html;
         }
 

@@ -20,17 +20,24 @@ public class HTMLAnalyticsService {
     private final RestTemplate restTemplate;
 
     public SearchResponse analysis(SearchRequest request) {
-        ResponseEntity<String> responseEntity = restTemplate.exchange(request.getUrl(), HttpMethod.GET, null, String.class);
-        String html = responseEntity.getBody();
 
+        // step 01. 페이지를 가져온다.
+        ResponseEntity<String> responseEntity = restTemplate.exchange(request.getUrl(), HttpMethod.GET, null, String.class);
+        if ( responseEntity == null || responseEntity.getBody() == null ) {
+            return SearchResponse.builder().division( null ).remainder( null ).build();
+        }
+
+        // step 02. 요청에 따라 분석한다.
+        String html = responseEntity.getBody();
         if ( request.getType() == SearchType.HTML ) {
             html = TextReplacer.removeHtmlTag(html);
         }
 
         String origin = HTMLAnalyser.process(html);
         int length = origin.length();
-        int unit = request.getUnit();
+        int unit = request.getUnit() < 1 ? 1 : request.getUnit();
 
+        // step 03. 분석한 결과로 전달한다.
         if ( length < unit ) {
             return SearchResponse.builder()
                     .division( null )

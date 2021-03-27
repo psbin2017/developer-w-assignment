@@ -1,5 +1,6 @@
 package com.assignment.web.dto;
 
 public enum SearchType {
-    HTML, TEXT
+    HTML, // HTML 제외
+    TEXT // HTML 포함
 }
