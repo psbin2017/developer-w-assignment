@@ -1,7 +1,10 @@
 package com.assignment.util;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import org.springframework.util.ObjectUtils;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class HTMLAnalyser {
 
     /**

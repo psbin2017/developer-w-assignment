@@ -1,7 +1,10 @@
 package com.assignment.util;
 
 import com.assignment.web.dto.SearchResponse;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class TextResultDivider {
 
     /**
