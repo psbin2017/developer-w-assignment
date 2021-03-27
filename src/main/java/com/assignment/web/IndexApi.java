@@ -1,7 +1,7 @@
 package com.assignment.web;
 
 import com.assignment.service.HTMLAnalyticsService;
-import com.assignment.web.dto.SearchDTO;
+import com.assignment.web.dto.SearchRequest;
 import com.assignment.web.dto.SearchResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,7 +17,7 @@ public class IndexApi {
     private final HTMLAnalyticsService htmlAnalyticsService;
 
     @PostMapping("/assignment")
-    public SearchResponse find(@RequestBody SearchDTO request) {
+    public SearchResponse find(@RequestBody SearchRequest request) {
         return htmlAnalyticsService.analysis(request);
     }
 

@@ -6,13 +6,13 @@ import lombok.Getter;
 @Getter
 public class SearchResponse {
 
-    private String share;
+    private String division;
 
-    private String rest;
+    private String remainder;
 
     @Builder
-    public SearchResponse(String share, String rest) {
-        this.share = share;
-        this.rest = rest;
+    public SearchResponse(String division, String remainder) {
+        this.division = division;
+        this.remainder = remainder;
     }
 }

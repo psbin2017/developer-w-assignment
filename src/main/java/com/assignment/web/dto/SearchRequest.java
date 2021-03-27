@@ -6,7 +6,7 @@ import lombok.ToString;
 
 @Getter
 @ToString
-public class SearchDTO {
+public class SearchRequest {
 
     private String url;
 
@@ -15,7 +15,7 @@ public class SearchDTO {
     private int unit;
 
     @Builder
-    public SearchDTO(String url, SearchType type, int unit) {
+    public SearchRequest(String url, SearchType type, int unit) {
         this.url = url;
         this.type = type;
         this.unit = unit;
