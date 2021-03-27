@@ -6,13 +6,14 @@ import lombok.Getter;
 @Getter
 public class SearchResponse {
 
-    private String division;
+    private final String division;
 
-    private String remainder;
+    private final String remainder;
 
     @Builder
     public SearchResponse(String division, String remainder) {
         this.division = division;
         this.remainder = remainder;
     }
+
 }
